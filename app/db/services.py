@@ -19,7 +19,6 @@ class UserService:
                     },
                 )
                 user = result.scalars().one()
-                print(type(user), user)
                 return user
             except Exception as exc:
                 print("UserService.get_user_async():", type(exc), exc)

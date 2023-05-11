@@ -1,11 +1,11 @@
 import asyncio
 import datetime
+import sys
 from fastapi import FastAPI, HTTPException
 
 import app.db.models.user as models_user
 import app.db.services as db_service
 import app.schemas.user as schemas_user
-from app.core.config import settings
 from app.db.base import async_session, Base, engine
 
 
@@ -72,4 +72,5 @@ async def async_main() -> None:
     await engine.dispose()
 
 
-asyncio.create_task(async_main())
+if not "pytest" in sys.modules:
+    asyncio.create_task(async_main())
