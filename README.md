@@ -24,6 +24,11 @@ POSTGRES_PORT=<port>
 POSTGRES_USERNAME=<username>
 POSTGRES_PASSWORD=<password>
 POSTGRES_DB=<database_name>
+JWT_SECRET_KEY=<jwt_secret_key>
+JWT_ALGORITHM=HS256
+JWT_EXPIRE_MINUTES=<jwt_expire_minutes>
+TEST_APP_USER_USERNAME=<test_jwt_auth_username>
+TEST_APP_USER_PASSWORD=<test_jwt_auth_password>
 ```
 5. Start development server:
 ```
@@ -57,7 +62,7 @@ Database choice: PostgreSQL
 - High performance and scalability with a lot of advanced features for modern applications.
 
 Possible improvements:
-- IMPORTANT: Remove test app user creation (`create_test_app_user()`, `settings.TEST_APP_USER_USERNAME`, `settings.TEST_APP_USER_PASSWORD`) and replace with proper app user management.
+- IMPORTANT: Remove the test app user creation (`create_test_app_user()`, `settings.TEST_APP_USER_USERNAME`, `settings.TEST_APP_USER_PASSWORD`) and replace with proper app user management.
 - IMPORTANT: Turn off echo feature in database engine (echo=Off) in `app/db/base.py`.
 - Use Docker
 - Add authorization and authentication.
