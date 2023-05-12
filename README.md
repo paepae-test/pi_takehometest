@@ -4,7 +4,7 @@
 ## Requirements
 
 Tested with:
-- Python 3.9.1
+- Python 3.9
 - PostgreSQL 12.5
 
 
@@ -27,8 +27,9 @@ POSTGRES_DB=<database_name>
 ```
 5. Start development server:
 ```
-uvicorn app.main:app --reload
+uvicorn app.main:main_app --reload
 ```
+6. See documentations at http://localhost:8000/docs#/
 
 Run integration test:
 1. Run the server at least once to initialize DB data.
@@ -43,21 +44,25 @@ pytest
 Language choice: Python
 - Good for fast development. Has features fit to the requirements.
 - Compare to C#, it would take more time to develop.
+- Trade-offs: Weak data typing. Lower performance.
 
 Framework choice: FastAPI, SQLAlchemy
 - Good choices for API development with good performance and minimal overhead.
 - Has async support.
 - Has good documentations.
-- Compare to Django/Django Rest Framework, its async support still in development.
+- Compare to Django/Django REST Framework, its async support still in development.
 
 Database choice: PostgreSQL
 - Free and open source.
 - High performance and scalability with a lot of advanced features for modern applications.
 
 Possible improvements:
+- IMPORTANT: Remove test app user creation (`create_test_app_user()`, `settings.TEST_APP_USER_USERNAME`, `settings.TEST_APP_USER_PASSWORD`) and replace with proper app user management.
+- IMPORTANT: Turn off echo feature in database engine (echo=Off) in `app/db/base.py`.
 - Use Docker
 - Add authorization and authentication.
 - Add database migrations.
 - Add data cleanup after integration test execution.
 - Add caching layer. Maybe using Redis.
-- Turn off echo feature in database engine (echo=Off) in `app/db/base.py`.
+- Add logging.
+- Add more tests, eg. duplicate email address.
