@@ -8,7 +8,7 @@ Tested with:
 - PostgreSQL 12.5
 
 
-## Running development server
+## Running development server without Docker
 
 Run development server:
 1. Install Python packages:
@@ -17,7 +17,7 @@ pip install -r requirements.txt
 ```
 2. Run PostgreSQL server.
 3. Create new database in PostgreSQL.
-4. Create `.env` file with following content. Replace all values with your configuration:
+4. Create `.env` file with following content. Replace all <...> values with your configuration:
 ```
 POSTGRES_HOST=<host>
 POSTGRES_PORT=<port>
@@ -44,6 +44,36 @@ pytest
 ```
 
 
+## Running development server with Docker
+
+Requirements:
+- Docker
+
+Run development server:
+1. Create `.env.docker` file with following content. Replace all <...> values with your configuration:
+```
+POSTGRES_HOST=db
+POSTGRES_PORT=5432
+POSTGRES_USERNAME=postgres
+POSTGRES_PASSWORD=postgres
+POSTGRES_DB=pi_takehometest
+JWT_SECRET_KEY=<jwt_secret_key>
+JWT_ALGORITHM=HS256
+JWT_EXPIRE_MINUTES=<jwt_expire_minutes>
+TEST_APP_USER_USERNAME=<test_jwt_auth_username>
+TEST_APP_USER_PASSWORD=<test_jwt_auth_password>
+```
+2. Build Docker image.
+```
+docker-compose build
+```
+3. Run Docker containers.
+```
+docker-compose up
+```
+4. See documentations at http://localhost:8000/docs#/
+
+
 ## Development Note
 
 Language choice: Python
@@ -66,7 +96,7 @@ Possible improvements:
 - IMPORTANT: Turn off echo feature in database engine (echo=Off) in `app/db/base.py`.
 - IMPORTANT: Add database migrations.
 - IMPORTANT: Add data cleanup after integration test execution.
-- Use Docker
 - Add caching layer. Maybe using Redis.
 - Add logging.
 - Add more tests, eg. duplicate email address.
+- Add Docker support for running integration tests.
