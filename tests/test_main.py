@@ -1,10 +1,10 @@
 import random
 from fastapi.testclient import TestClient
 
-from app.main import app
+from app.main import main_app
 
 
-client = TestClient(app)
+client = TestClient(main_app)
 
 
 def test_create_get_update_search_user():
