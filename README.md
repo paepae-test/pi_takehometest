@@ -64,10 +64,9 @@ Database choice: PostgreSQL
 Possible improvements:
 - IMPORTANT: Remove the test app user creation (`create_test_app_user()`, `settings.TEST_APP_USER_USERNAME`, `settings.TEST_APP_USER_PASSWORD`) and replace with proper app user management.
 - IMPORTANT: Turn off echo feature in database engine (echo=Off) in `app/db/base.py`.
+- IMPORTANT: Add database migrations.
+- IMPORTANT: Add data cleanup after integration test execution.
 - Use Docker
-- Add authorization and authentication.
-- Add database migrations.
-- Add data cleanup after integration test execution.
 - Add caching layer. Maybe using Redis.
 - Add logging.
 - Add more tests, eg. duplicate email address.
