@@ -4,6 +4,7 @@
 ## Requirements
 
 Tested with:
+- macOS Monterey 12.5
 - Python 3.9
 - PostgreSQL 12.5
 
@@ -34,7 +35,7 @@ TEST_APP_USER_PASSWORD=<test_jwt_auth_password>
 ```
 uvicorn app.main:main_app --reload
 ```
-6. See documentations at http://localhost:8000/docs#/
+6. See API documentations at http://localhost:8000/docs#/
 
 Run integration test:
 1. Run the server at least once to initialize DB data.
@@ -71,7 +72,7 @@ docker-compose build
 ```
 docker-compose up
 ```
-4. See documentations at http://localhost:8000/docs#/
+4. See API documentations at http://localhost:8000/docs#/
 
 
 ## Development Note
